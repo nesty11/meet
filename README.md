@@ -22,9 +22,7 @@ The Meet App is a versatile event management application that allows users to ex
 - Then the selected city should be applied as the filter for upcoming events
 
 **User Stories:**
-- As a user, I should be able to effortlessly explore events from various cities without specifying a location, so that I can discover a diverse range of options.
-- As a user, I should be able to see suggestions for cities as I type, so that I can quickly find and select my desired city for event exploration.
-- As a user, I should be able to choose a city from the suggested list, so that the selected city is applied as the filter for upcoming events.
+- As a user, I would like to be able to filter events by city so that I can see a list of events happening in the city that I might be interested in.
 
 ### Feature 2: Show/Hide Event Details 🎭
 
@@ -44,9 +42,7 @@ The Meet App is a versatile event management application that allows users to ex
 - Then the event details should be hidden
 
 **User Stories:**
-- As a user, I should be able to see only essential event details by default, so that I can get a quick overview of events.
-- As a user, I should be able to expand event details when I need more information, so that I have a seamless and informative experience.
-- As a user, I should be able to collapse event details to focus on a high-level view of events, reducing visual clutter.
+- As a user, I would like to be able to show/hide event details so that I can see more/less information about an event.
 
 ### Feature 3: Specify Number of Events 🔢
 
@@ -61,8 +57,7 @@ The Meet App is a versatile event management application that allows users to ex
 - Then the list should update to show the specified number of events
 
 **User Stories:**
-- As a user, I should be able to quickly view a default number of upcoming events, so that I can get a snapshot of what's happening.
-- As a user, I should be able to customize the number of displayed events, so that I can cater to my preferences and screen size.
+- As a user, I would like to be able to specify the number of events I want to view in the app so that I can see more or fewer events in the events list at once.
 
 ### Feature 4: Use the App When Offline 📴
 
@@ -77,8 +72,7 @@ The Meet App is a versatile event management application that allows users to ex
 - Then the app should display an error message indicating the lack of internet connectivity
 
 **User Stories:**
-- As a user, I should be able to seamlessly access cached event data when offline, so that I can still browse and plan.
-- As a user, I should see clear error messages when attempting to change settings offline, preventing confusion about connectivity.
+- As a user, I would like to be able to use the app when offline so that I can see the events I viewed the last time I was online.
 
 ### Feature 5: Add an App Shortcut to the Home Screen 🏡📱
 
