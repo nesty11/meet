@@ -22,7 +22,7 @@ The Meet App is a versatile event management application that allows users to ex
 - Then the selected city should be applied as the filter for upcoming events
 
 **User Stories:**
-- As a user, I would like to be able to filter events by city so that I can see a list of events happening in the city that I might be interested in.
+- As a user, I should be able to filter events by city so that I can see a list of events happening in the city that I might be interested in.
 
 ### Feature 2: Show/Hide Event Details 🎭
 
@@ -42,7 +42,7 @@ The Meet App is a versatile event management application that allows users to ex
 - Then the event details should be hidden
 
 **User Stories:**
-- As a user, I would like to be able to show/hide event details so that I can see more/less information about an event.
+- As a user, I should be able to show/hide event details so that I can see more/less information about an event.
 
 ### Feature 3: Specify Number of Events 🔢
 
@@ -57,7 +57,7 @@ The Meet App is a versatile event management application that allows users to ex
 - Then the list should update to show the specified number of events
 
 **User Stories:**
-- As a user, I would like to be able to specify the number of events I want to view in the app so that I can see more or fewer events in the events list at once.
+- As a user, I should be able to specify the number of events I want to view in the app so that I can see more or fewer events in the events list at once.
 
 ### Feature 4: Use the App When Offline 📴
 
@@ -72,7 +72,7 @@ The Meet App is a versatile event management application that allows users to ex
 - Then the app should display an error message indicating the lack of internet connectivity
 
 **User Stories:**
-- As a user, I would like to be able to use the app when offline so that I can see the events I viewed the last time I was online.
+- As a user, I should be able to use the app when offline so that I can see the events I viewed the last time I was online.
 
 ### Feature 5: Add an App Shortcut to the Home Screen 🏡📱
 
