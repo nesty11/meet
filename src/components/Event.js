@@ -1,6 +1,4 @@
 import { useState } from "react";
-/* import { getEvents } from "../api";
-import mockData from "../mockData"; */
 
 const Event = ({ event }) => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
@@ -18,40 +16,26 @@ const Event = ({ event }) => {
         <div>{readableDate}</div>
         <div>{event.location}</div>
       </div>
-      {/* details are hidden by default */}
-      {isDetailsOpen ? (
-        <details open={true} className="detailsOpened">
-          <summary> </summary>
-          <p> {event.description} </p>
-        </details>
-      ) : (
-        <details open={false} className="detailsClosed">
-          <summary> </summary>
-          <p> {event.description}</p>
-        </details>
-      )}
 
-      <div className="details-btn">
-        {isDetailsOpen ? (
-          <button
-            className="hide-details"
-            onClick={() => {
-              setIsDetailsOpen(false);
-            }}
-          >
-            Hide Details
-          </button>
-        ) : (
-          <button
-            className="show-details"
-            onClick={() => {
-              setIsDetailsOpen(true);
-            }}
-          >
-            show details
-          </button>
-        )}
-      </div>
+      {/* details are hidden by default */}
+      <details
+        open={isDetailsOpen}
+        className={isDetailsOpen ? "detailsOpened" : "detailsClosed"}
+      >
+        <summary>
+          {/* Use a conditional rendering for the description */}
+          {isDetailsOpen && <p>{event.description}</p>}
+        </summary>
+      </details>
+
+      <button
+        className={isDetailsOpen ? "hide-details" : "show-details"}
+        onClick={() => {
+          setIsDetailsOpen((prevState) => !prevState);
+        }}
+      >
+        {isDetailsOpen ? "Hide Details" : "Show Details"}
+      </button>
     </li>
   );
 };
