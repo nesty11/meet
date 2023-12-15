@@ -48,16 +48,14 @@ describe("<Event/> component", () => {
   });
 
   test("hides the details section when the user clicks on the hide details button", async () => {
+    const showDetailsButton = EventComponent.queryByText("Show Details");
+    await userEvent.click(showDetailsButton);
     const hideDetailsButton = EventComponent.queryByText("Hide Details");
+    expect(hideDetailsButton).toBeInTheDocument();
+    await userEvent.click(hideDetailsButton);
 
-    if (hideDetailsButton) {
-      expect(hideDetailsButton).toBeInTheDocument();
-      await userEvent.click(hideDetailsButton);
-      const descriptionSection =
-        EventComponent.container.querySelector(".detailsClosed");
-      expect(descriptionSection).not.toBeVisible();
-    } else {
-      console.warn("The 'hide details' button is not present.");
-    }
+    const descriptionSection =
+      EventComponent.container.querySelector(".detailsClosed");
+    expect(descriptionSection).not.toBeVisible();
   });
 });
