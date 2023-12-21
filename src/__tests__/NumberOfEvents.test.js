@@ -5,9 +5,8 @@ import userEvent from "@testing-library/user-event";
 describe("<NumberOfEvents /> component", () => {
   let NumberOfEventsComponent;
   beforeEach(() => {
-    const setCurrentNOE = jest.fn();
     NumberOfEventsComponent = render(
-      <NumberOfEvents setCurrentNOE={setCurrentNOE} />
+      <NumberOfEvents setCurrentNOE={() => {}} />
     );
   });
 
