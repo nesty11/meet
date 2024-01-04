@@ -11,14 +11,13 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
 
   const handleInputChanged = (event) => {
     const value = event.target.value;
-    const filteredLocations = allLocations
-      ? allLocations.filter((location) => {
-          return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
-        })
-      : [];
+    const filteredLocations = allLocations.filter((location) => {
+      return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
+    });
     setQuery(value);
     setSuggestions(filteredLocations);
   };
+
   const handleItemClicked = (event) => {
     const value = event.target.textContent;
     setQuery(value);
@@ -53,4 +52,5 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
     </div>
   );
 };
+
 export default CitySearch;

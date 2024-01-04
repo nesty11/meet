@@ -29,7 +29,9 @@ const Event = ({ event }) => {
       </details>
 
       <button
-        className={isDetailsOpen ? "hide-details" : "show-details"}
+        className={`details-btn ${
+          isDetailsOpen ? "hide-details" : "show-details"
+        }`}
         onClick={() => {
           setIsDetailsOpen((prevState) => !prevState);
         }}

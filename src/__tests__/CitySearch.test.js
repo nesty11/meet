@@ -27,13 +27,23 @@ describe("<CitySearch /> component", () => {
     expect(suggestionList).toHaveClass("suggestions");
   });
   test("updates list of suggestions correctly when user types in city textbox", async () => {
-    const user = userEvent;
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
-    CitySearchComponent.rerender(<CitySearch allLocations={allLocations} />);
-    // user types "Berlin" in city textbox
-    const cityTextBox = CitySearchComponent.queryByRole("textbox");
-    await user.type(cityTextBox, "Berlin");
+
+    // Render the component with initial data
+    CitySearchComponent.rerender(
+      <CitySearch allLocations={allLocations} setInfoAlert={() => {}} />
+    );
+
+    let cityTextBox;
+
+    // Wait for the data to be loaded before interacting with the UI
+    await waitFor(() => {
+      // user types "Berlin" in city textbox
+      cityTextBox = CitySearchComponent.queryByRole("textbox");
+      userEvent.type(cityTextBox, "Berlin");
+    });
+
     // filter allLocations to locations matching "Berlin"
     const suggestions = allLocations
       ? allLocations.filter((location) => {
@@ -42,6 +52,7 @@ describe("<CitySearch /> component", () => {
           );
         })
       : [];
+
     // get all <li> elements inside the suggestion list
     const suggestionListItems = CitySearchComponent.queryAllByRole("listitem");
     expect(suggestionListItems).toHaveLength(suggestions.length + 1);
@@ -85,17 +96,22 @@ describe("<CitySearch /> component", () => {
 
 describe("<CitySearch /> integration", () => {
   test("renders suggestions list when the app is rendered.", async () => {
-    const user = userEvent;
     const AppComponent = render(<App />);
     const AppDOM = AppComponent.container.firstChild;
 
     const CitySearchDOM = AppDOM.querySelector("#city-search");
     const cityTextBox = within(CitySearchDOM).queryByRole("textbox");
-    await user.click(cityTextBox);
 
+    // Wait for the data to be loaded before interacting with the UI
+    await waitFor(() => {
+      userEvent.click(cityTextBox);
+    });
+
+    // Get the data after it's loaded
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
 
+    // Wait for the suggestion list to be present
     await waitFor(() => {
       const suggestionListItems =
         within(CitySearchDOM).queryAllByRole("listitem");
