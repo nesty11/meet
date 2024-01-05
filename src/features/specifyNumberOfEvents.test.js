@@ -2,19 +2,20 @@ import { render, waitFor } from "@testing-library/react";
 import { loadFeature, defineFeature } from "jest-cucumber";
 import App from "../App";
 import userEvent from "@testing-library/user-event";
-import NumberOfEvents from "../components/NumberOfEvents";
+// import NumberOfEvents from "../components/NumberOfEvents";
 
 const feature = loadFeature("./src/features/specifyNumberOfEvents.feature");
 
 defineFeature(feature, (test) => {
-  let AppComponent;
-  let NumberOfEventsComponent;
+  // let AppComponent;
+  // let NumberOfEventsComponent;
 
   test("Display 32 events by default when the user hasn't specified a number", ({
     given,
     when,
     then,
   }) => {
+    let AppComponent;
     given("the user hasn't specified the number of event", () => {
       AppComponent = render(<App />);
     });
@@ -43,11 +44,12 @@ defineFeature(feature, (test) => {
     when,
     then,
   }) => {
+    let AppComponent;
     given("the user is viewing the list of upcoming events", async () => {
       AppComponent = render(<App />);
-      NumberOfEventsComponent = render(
-        <NumberOfEvents setCurrentNOE={() => {}} initialEventsNumber="10" />
-      );
+      // NumberOfEventsComponent = render(
+      //   <NumberOfEvents setCurrentNOE={() => {}} initialEventsNumber="10" />
+      // );
       await waitFor(() => {
         const eventList = AppComponent.container.querySelector("#event-list");
         expect(eventList).toBeTruthy();
@@ -57,11 +59,13 @@ defineFeature(feature, (test) => {
     when(
       "the user specifies a different number of events to be displayed",
       async () => {
+        // const inputField =
+        //   NumberOfEventsComponent.container.querySelector(".event-number");
         const inputField =
-          NumberOfEventsComponent.container.querySelector(".event-number");
-        await userEvent.clear(inputField);
+          AppComponent.container.querySelector(".event-number");
+        // await userEvent.clear(inputField);
         await userEvent.type(inputField, "{backspace}{backspace}10");
-        await new Promise((resolve) => setTimeout(resolve, 0)); // Add a small delay
+        // await new Promise((resolve) => setTimeout(resolve, 0)); // Add a small delay
       }
     );
 
