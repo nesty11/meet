@@ -1,14 +1,11 @@
 import mockData from "./mockData";
+import NProgress from "nprogress"; // Add NProgress library
 
 /**
- *
- * @param {*} events:
- * The following function should be in the “api.js” file.
  * This function takes an events array, then uses map to create a new array with only locations.
  * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
  * The Set will remove all duplicates from the array.
  */
-
 export const extractLocations = (events) => {
   const extractLocations = events.map((event) => event.location);
   const locations = [...new Set(extractLocations)];
@@ -58,10 +55,12 @@ const getToken = async (code) => {
   }
 };
 
-/*  This function will fetch the list of all events
- */
+/* This function will fetch the list of all events */
 export const getEvents = async () => {
+  NProgress.start(); // Start NProgress
+
   if (window.location.href.startsWith("http://localhost")) {
+    NProgress.done(); // Finish NProgress
     return mockData;
   }
 
@@ -70,14 +69,22 @@ export const getEvents = async () => {
   if (token) {
     removeQuery();
     const url =
-      " https://xonfa90sni.execute-api.us-east-1.amazonaws.com/dev/api/get-events" +
+      "https://xonfa90sni.execute-api.us-east-1.amazonaws.com/dev/api/get-events" +
       "/" +
       token;
     const response = await fetch(url);
     const result = await response.json();
+    NProgress.done(); // Finish NProgress
     if (result) {
       return result.events;
-    } else return null;
+    } else {
+      console.log("No events found");
+      return null;
+    }
+  } else {
+    console.log("No token obtained");
+    NProgress.done(); // Finish NProgress
+    return null;
   }
 };
 
@@ -95,9 +102,12 @@ export const getAccessToken = async () => {
       );
       const result = await response.json();
       const { authUrl } = result;
+      console.log("Redirecting to auth URL");
       return (window.location.href = authUrl);
     }
+    console.log("Fetching token with code");
     return code && getToken(code);
   }
+  console.log("Using existing access token");
   return accessToken;
 };
