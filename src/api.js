@@ -1,11 +1,6 @@
 import mockData from "./mockData";
-import NProgress from "nprogress"; // Add NProgress library
+import NProgress from "nprogress";
 
-/**
- * This function takes an events array, then uses map to create a new array with only locations.
- * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
- * The Set will remove all duplicates from the array.
- */
 export const extractLocations = (events) => {
   const extractLocations = events.map((event) => event.location);
   const locations = [...new Set(extractLocations)];
@@ -57,10 +52,10 @@ const getToken = async (code) => {
 
 /* This function will fetch the list of all events */
 export const getEvents = async () => {
-  NProgress.start(); // Start NProgress
+  NProgress.start();
 
   if (window.location.href.startsWith("http://localhost")) {
-    NProgress.done(); // Finish NProgress
+    NProgress.done();
     return mockData;
   }
 
@@ -74,7 +69,7 @@ export const getEvents = async () => {
       token;
     const response = await fetch(url);
     const result = await response.json();
-    NProgress.done(); // Finish NProgress
+    NProgress.done();
     if (result) {
       return result.events;
     } else {
@@ -83,7 +78,7 @@ export const getEvents = async () => {
     }
   } else {
     console.log("No token obtained");
-    NProgress.done(); // Finish NProgress
+    NProgress.done();
     return null;
   }
 };
