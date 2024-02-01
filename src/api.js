@@ -1,3 +1,4 @@
+import nProgress from "nprogress";
 import mockData from "./mockData";
 import NProgress from "nprogress";
 
@@ -54,6 +55,12 @@ const getToken = async (code) => {
 export const getEvents = async () => {
   NProgress.start();
 
+  if (!navigator.onLine) {
+    const events = localStorage.getItem("lastEvents");
+    NProgress.done();
+    return events ? JSON.parse(events) : [];
+  }
+
   if (window.location.href.startsWith("http://localhost")) {
     NProgress.done();
     return mockData;
@@ -69,17 +76,11 @@ export const getEvents = async () => {
       token;
     const response = await fetch(url);
     const result = await response.json();
-    NProgress.done();
     if (result) {
+      NProgress.done();
+      localStorage.setItem("lastEvents", JSON.stringify(result.events));
       return result.events;
-    } else {
-      console.log("No events found");
-      return null;
-    }
-  } else {
-    console.log("No token obtained");
-    NProgress.done();
-    return null;
+    } else return null;
   }
 };
 
