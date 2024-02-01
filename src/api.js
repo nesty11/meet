@@ -1,4 +1,3 @@
-import nProgress from "nprogress";
 import mockData from "./mockData";
 import NProgress from "nprogress";
 
