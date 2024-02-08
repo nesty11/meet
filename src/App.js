@@ -4,7 +4,9 @@ import NumberOfEvents from "./components/NumberOfEvents";
 import { useEffect, useState } from "react";
 import { extractLocations, getEvents } from "./api";
 import { InfoAlert, ErrorAlert, WarningAlert } from "./components/Alert";
-
+import CityEventsChart from "./components/CityEventsChart";
+import EventsGenresChart from "./components/EventsGenresChart";
+import logo from "./img/meetme2.png";
 import "./App.css";
 
 const App = () => {
@@ -37,6 +39,13 @@ const App = () => {
 
   return (
     <div className="App">
+      <div className="logo-container">
+        <img src={logo} alt="Logo" />
+      </div>
+      <div className="header">
+        <h1>Meet Me</h1>
+        <h3>Learn to code with friends!</h3>
+      </div>
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
@@ -51,6 +60,10 @@ const App = () => {
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert}
       />
+      <div className="charts-container">
+        <EventsGenresChart events={events} />
+        <CityEventsChart allLocations={allLocations} events={events} />
+      </div>
       <EventList events={events} />
     </div>
   );
