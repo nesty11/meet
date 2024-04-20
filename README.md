@@ -124,3 +124,30 @@ By embracing serverless architecture, the Meet App can provide a seamless user e
 These serverless functions are a cornerstone of the Meet App's ability to efficiently deliver real-time event data, chart insights, and secure authorization for accessing external APIs while maintaining optimal performance.
 
 **Note:** Proper configuration of AWS credentials is crucial to ensure the successful deployment and operation of these serverless functions.
+
+## Installation
+
+To get started with NvFlix, follow these steps:
+
+1. Clone the repository::
+```
+   git clone https://github.com/your-username/meet-app.git
+```
+
+2. Navigate to the project directory::
+```
+   cd nvflix
+```
+
+3. Install dependencies::
+```
+   npm install
+```
+
+4. Start the development server::
+```
+   npm start
+```
+
+5. Open your browser and visit http://localhost:3000 to access NvFlix and start exploring!
+
