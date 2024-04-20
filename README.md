@@ -136,7 +136,7 @@ To get started with NvFlix, follow these steps:
 
 2. Navigate to the project directory::
 ```
-   cd nvflix
+   cd meet-app
 ```
 
 3. Install dependencies::
