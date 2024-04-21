@@ -136,7 +136,7 @@ To get started with NvFlix, follow these steps:
 
 2. Navigate to the project directory::
 ```
-   cd meet-app
+   cd ../meet-app
 ```
 
 3. Install dependencies::
@@ -149,5 +149,5 @@ To get started with NvFlix, follow these steps:
    npm start
 ```
 
-5. Open your browser and visit http://localhost:3000 to access NvFlix and start exploring!
+5. Open your browser and visit http://localhost:3000 to access Meet and start exploring!
 
