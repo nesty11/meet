@@ -127,7 +127,7 @@ These serverless functions are a cornerstone of the Meet App's ability to effici
 
 ## Installation
 
-To get started with NvFlix, follow these steps:
+To get started with Meet, follow these steps:
 
 1. Clone the repository::
 ```
